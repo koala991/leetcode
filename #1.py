@@ -2,26 +2,21 @@
 """Two Sum"""
 
 
-# class Solution:
-#     def twoSum(self, nums, target):
-#         count = 0
-#         while nums:
-#             x = nums.pop(0)
-#             count += 1
-#             if target - x in nums:
-#                 return [count - 1, nums.index(target - x) + count]
-#         return -1
-
 class Solution:
     def twoSum(self, nums, target):
-        ever = {}
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        output = [-1, -1]
+        reverse_map = dict()
         for i, x in enumerate(nums):
-            if target - x in ever:
-                return [ever[target - x], i]
-            elif x not in ever:
-                ever[x] = i
-        else:
-            return -1
+            if x in reverse_map:
+                output[0], output[1] = reverse_map[x], i 
+            else:
+                reverse_map[target - x] = i
+        return output
 
 if __name__=="__main__":
     nums = [3, 2, 4]
